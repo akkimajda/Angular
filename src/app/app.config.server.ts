@@ -1,12 +1,15 @@
-import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
-import { provideServerRendering, withRoutes } from '@angular/ssr';
-import { appConfig } from './app.config';
-import { serverRoutes } from './app.routes.server';
+// src/app/app.config.server.ts
+import { ApplicationConfig } from '@angular/core';
+import { provideServerRendering } from '@angular/platform-server';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
 
-const serverConfig: ApplicationConfig = {
+// ❗️IMPORTANT : pas de Keycloak ici, pas d'APP_INITIALIZER ici
+export const config: ApplicationConfig = {
   providers: [
-    provideServerRendering(withRoutes(serverRoutes))
-  ]
+    provideServerRendering(),
+    provideRouter(routes),
+    provideHttpClient(),
+  ],
 };
-
-export const config = mergeApplicationConfig(appConfig, serverConfig);

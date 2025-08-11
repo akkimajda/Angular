@@ -1,1 +1,9 @@
-<p>home works!</p>
+<h1>Frontend Auth (Angular) ✅</h1>
+
+<h2>Bienvenue dans la page d’accueil protégée ✨</h2>
+
+<button (click)="callApi()">Appeler l'API sécurisée</button>
+
+<p *ngIf="loading">Chargement…</p>
+<p *ngIf="result && !loading" style="color: green">Réponse API : {{ result }}</p>
+<p *ngIf="error && !loading" style="color: red">{{ error }}</p>
