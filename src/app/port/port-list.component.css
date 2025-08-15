@@ -1,0 +1,16 @@
+.wrapper { max-width: 900px; margin: 16px auto; }
+.filters { display: flex; gap: 8px; margin: 12px 0; }
+.filters input { flex: 1; padding: 8px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 1px solid #ddd; padding: 8px; }
+th { background: #f7f7f7; text-align: left; }
+button { padding: 6px 10px; cursor: pointer; }
+.modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,.35);
+  display: grid; place-items: center;
+}
+.modal-content {
+  background: white; padding: 16px; border-radius: 8px; width: 360px;
+  display: grid; gap: 8px;
+}
+.modal .actions { display: flex; gap: 8px; justify-content: flex-end; }
