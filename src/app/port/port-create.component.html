@@ -1,0 +1,35 @@
+<h2>Créer Port</h2>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <div>
+    <label>Code Port :</label>
+    <input name="codePort"
+           [(ngModel)]="port.codePort"
+           (ngModelChange)="onCodeChange($event)"
+           required
+           pattern="^[A-Z]{5}$"
+           maxlength="5" />
+    <small *ngIf="f.submitted && f.controls['codePort']?.invalid" style="color:red">
+      5 lettres majuscules obligatoires (ex: CASAB).
+    </small>
+  </div>
+
+  <div>
+    <label>Nom Port :</label>
+    <input name="nomPort" [(ngModel)]="port.nomPort" required />
+  </div>
+
+  <div>
+    <label>Localisation :</label>
+    <input name="localisation" [(ngModel)]="port.localisation" required />
+  </div>
+
+  <div>
+    <label>Capacité :</label>
+    <input type="number" name="capacite" [(ngModel)]="port.capacite" required min="0" />
+  </div>
+
+  <button type="submit" [disabled]="loading || f.invalid">
+    {{ loading ? 'Création…' : 'Créer' }}
+  </button>
+</form>
