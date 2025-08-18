@@ -3,13 +3,20 @@
 
   <!-- Filtres -->
   <form class="filters" (ngSubmit)="search()">
-    <input [(ngModel)]="codePort" name="codePort" placeholder="Code port (ABCDE)" maxlength="5" />
+    <input
+      [(ngModel)]="codePort"
+      name="codePort"
+      placeholder="Code port (ABCDE)"
+      maxlength="5"
+      (input)="onCodeFilterInput()"
+    />
     <input [(ngModel)]="nomPort" name="nomPort" placeholder="Nom port" />
     <input [(ngModel)]="localisation" name="localisation" placeholder="Localisation" />
     <button type="submit">Rechercher</button>
   </form>
 
   <div *ngIf="loading">Chargement...</div>
+  <div *ngIf="!loading && errorMsg" class="error">{{ errorMsg }}</div>
 
   <!-- Tableau -->
   <table *ngIf="!loading">
@@ -23,14 +30,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of ports">
+      <tr *ngFor="let p of ports; trackBy: trackByCode">
         <td>{{ p.codePort }}</td>
         <td>{{ p.nomPort }}</td>
         <td>{{ p.localisation }}</td>
         <td>{{ p.capacite }}</td>
-        <td>
-          <button (click)="openEdit(p)">✏️</button>
-          <button (click)="confirmDelete(p.codePort)">🗑️</button>
+        <td class="actions">
+          <button title="Modifier" (click)="openEdit(p)">✏️</button>
+          <button title="Supprimer" (click)="confirmDelete(p.codePort)">🗑️</button>
         </td>
       </tr>
       <tr *ngIf="ports.length === 0">
@@ -39,19 +46,23 @@
     </tbody>
   </table>
 
-  <!-- Modale d'édition simple -->
+  <!-- Modale d'édition -->
   <div class="modal" *ngIf="editing">
     <div class="modal-content">
       <h3>Modifier le port {{ editing?.codePort }}</h3>
+
       <label>Nom</label>
       <input [(ngModel)]="editing!.nomPort" name="nomEdit" />
+
       <label>Localisation</label>
       <input [(ngModel)]="editing!.localisation" name="locEdit" />
+
       <label>Capacité</label>
-      <input type="number" [(ngModel)]="editing!.capacite" name="capEdit" />
+      <input type="number" min="0" [(ngModel)]="editing!.capacite" name="capEdit" />
+
       <div class="actions">
         <button (click)="saveEdit()">Enregistrer</button>
-        <button (click)="cancelEdit()">Annuler</button>
+        <button class="btn-secondary" (click)="cancelEdit()">Annuler</button>
       </div>
     </div>
   </div>
