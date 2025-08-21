@@ -29,6 +29,9 @@
     "@angular/platform-server": "^20.1.0",
     "@angular/router": "^20.1.0",
     "@angular/ssr": "^20.1.4",
+    "bootstrap": "^5.3.7",
+    "bootstrap-icons": "^1.13.1",
+    "bootswatch": "^5.3.7",
     "express": "^5.1.0",
     "keycloak-angular": "^20.0.0",
     "keycloak-js": "^26.2.0",
@@ -43,12 +46,15 @@
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
+    "autoprefixer": "^10.4.21",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
     "typescript": "~5.8.2"
   }
 }

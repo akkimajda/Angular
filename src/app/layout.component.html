@@ -1,1 +1,56 @@
-<p>layout works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" routerLink="/">Gestion d’escale</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topnav" aria-controls="topnav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="topnav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Visite Maritime</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/visit/create">Créer AD</a></li>
+            <li><a class="dropdown-item" routerLink="/visit/list">Consulter Visite</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Navire</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/ship/create">Créer Navire</a></li>
+            <li><a class="dropdown-item" routerLink="/ship/list">Consulter Navire</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Terminal</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/terminal/create">Créer Terminal</a></li>
+            <li><a class="dropdown-item" routerLink="/terminal/list">Consulter Terminal</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Port</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/port/create">Créer Port</a></li>
+            <li><a class="dropdown-item" routerLink="/port/list">Consulter Port</a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+      <div class="d-flex align-items-center gap-3">
+        <span class="text-white-50 small">Connectée : <strong>{{ username }}</strong></span>
+        <button class="btn btn-outline-light btn-sm" (click)="logout()">
+          <i class="bi bi-box-arrow-right me-1"></i> Quitter
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
